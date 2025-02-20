@@ -21,7 +21,7 @@ export class DetalleAcreditacionComponent {
   modulosArray: any[] = [];
   acreditacionesArray: any[] = [];
   usuariosArray: any[] = [];
-
+//Actualizacion
   constructor(
     private acreditacionesService: AcreditacionesService,
     private formBuilder: FormBuilder
