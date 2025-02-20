@@ -1,0 +1,29 @@
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nickname</th>
+                <th>Email</th>
+                <th>Fecha de Activacion</th>
+                <th>Desactivas Sesion</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+    
+            @for (user of arrayUsuariosActivos; track $index) {
+                <tr>
+                    <td>{{ user.usuarioId }}</td>
+                    <td>{{ user.nickname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.fechaActivacion }}</td>
+                    <td><button class="botones" (click)="desactivarCuenta(user.usuarioId)">Desactivar</button></td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+
+</div>

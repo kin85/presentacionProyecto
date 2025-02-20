@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background-image: url('/assets/logo_acredita_incual.jpg');
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: 900px 900px;
+    background-color: white;
+
+}
+
+.button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #1E2B34; /* Color de fondo del botón */
+    color: #E7EEF2; /* Color del texto del botón */
+    border: none;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+}
+
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    background-color: #F5F5F5; /* Color de fondo del contenedor */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle un efecto de elevación */
+}
+
+.button:hover {
+    background-color: #FF5000; /* Color de fondo del botón al pasar el ratón */
+    color: #FFFFFF; /* Color del texto del botón al pasar el ratón */
+}
+

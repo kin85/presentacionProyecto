@@ -1,0 +1,42 @@
+<div class="container">
+    <h1>Detalle de la Acreditación</h1>
+
+    <div class="content">
+        <div class="left-column">
+            <div class="info-container">
+                <p><strong>ID Acreditación: {{idAcreditacion}}</strong> </p>
+                <p><strong>Nombre del Módulo: {{acreditacionDetalle.nombreModulo}}</strong> </p>
+                <p><strong>Nombre del Usuario: {{acreditacionDetalle.nombreUsuario}}</strong> </p>
+                <p><strong>Nombre del Asesor: {{acreditacionDetalle.nombreAsesor}}</strong></p>
+                
+                    <button class="boton-info" type="button" [routerLink]="['/acreditaciones']">Volver</button>
+                
+            </div>
+            <app-documento-list [id]="idAcreditacion"></app-documento-list>
+        </div>
+        <div class="right-column">
+            <div class="chat-container">
+                <div class="messages">
+                    @for (mensaje of mensajesArray; track $index) {
+                        @if (mensaje.acreditacion_id == idAcreditacion) {
+                            <div class="message">
+                                @for (usuario of usuariosArray; track $index) {
+                                    @if (usuario.id === mensaje.usuario_id) {
+                                        <p><strong>{{usuario.nombre}}:</strong> {{mensaje.contenido}}</p>
+                                    }
+                                }
+                            </div>
+                        }
+                    }
+                </div>
+<!-- Poner el id del usuario que enviar el mensaje -->
+                <form [formGroup]="mensajeForm">
+                    <div class="message-input">
+                        <input type="text" placeholder="Escribe tu mensaje aquí..." name="contenidoMensaje" formControlName="contenidoMensaje" (keydown.enter)="enviarMensaje('1')"/>
+                        <button type="button" (click)="enviarMensaje('1')">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

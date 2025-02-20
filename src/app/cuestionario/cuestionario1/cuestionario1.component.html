@@ -1,0 +1,75 @@
+@if (finalizado) {
+  <div class="overlay"></div>
+}
+<div class="contenido" [class.bloqueado]="finalizado">
+  <div class="cuestionario-container">
+    <div class="pregunta" [ngClass]="animacion">
+      <p>{{ preguntas[preguntaActual]?.texto }}</p>
+      <form [formGroup]="formulario">
+        <div class="respuestaContainer">
+          @if(preguntas[preguntaActual]?.tipoId == 1){
+            <div class="respuestaContainer siNo">
+            <button type="button" 
+                    (click)="seleccionarRespuesta('si')" 
+                    class="siNoButton"
+                    [ngClass]="{'seleccionado': obtenerRespuestaSeleccionada() === 'si'}" >Sí</button>
+            <button type="button" 
+                    class="siNoButton"
+                    (click)="seleccionarRespuesta('no')" 
+                    [ngClass]="{'seleccionado': obtenerRespuestaSeleccionada() === 'no'}">No</button>
+                  </div>
+                  }@else if (preguntas[preguntaActual]?.tipoId == 2){
+            <button type="button" 
+                    (click)="seleccionarRespuesta('1')" 
+                    [ngClass]="{'seleccionado': obtenerRespuestaSeleccionada() === '1'}" 
+                    class="rango">No sé hacerlo.</button>
+            <button type="button" 
+                    (click)="seleccionarRespuesta('2')" 
+                    [ngClass]="{'seleccionado': obtenerRespuestaSeleccionada() === '2'}" 
+                    class="rango">Lo puedo hacer con ayuda.</button>
+            <button type="button" 
+                    (click)="seleccionarRespuesta('3')" 
+                    [ngClass]="{'seleccionado': obtenerRespuestaSeleccionada() === '3'}" 
+                    class="rango">Lo puedo hacer sin necesitar ayuda.</button>
+            <button type="button" 
+                    (click)="seleccionarRespuesta('4')" 
+                    [ngClass]="{'seleccionado': obtenerRespuestaSeleccionada() === '4'}" 
+                    class="rango">Lo puedo hacer sin necesitar ayuda, e incluso podría formar a otro trabajador o trabajadora.</button>
+          
+          }@else{
+            <div class="cargandoPreguntas">
+              Cargando preguntas...
+            </div>
+          }
+        </div>
+      </form>
+    </div>
+
+    <div class="controles">
+      @if (preguntas[preguntaActual].tipoId == 2) {
+        <button (click)="anteriorPregunta()" class="anteriorsiguienteButton" [disabled]="preguntaActual === 0">Anterior</button>
+      }
+      @if (preguntaActual < preguntas.length - 1 && ((respuestaSeleccionada === 'no' && preguntas[preguntaActual].finalNo == true) 
+                                                    || (respuestaSeleccionada === 'si' && preguntas[preguntaActual].finalSi == true))) {
+        <button (click)="finalizar()" class="anteriorsiguienteButton" [disabled]="!respuestaSeleccionada && preguntas[preguntaActual]?.tipoId == 1">Siguiente</button>
+      }@else if(preguntaActual === preguntas.length - 1) {
+        <button class="boton-finalizar" (click)="finalizar()" [disabled]="!respuestaSeleccionada && preguntas[preguntaActual]?.tipoId == 1" >Finalizar</button>
+      }@else if(preguntaActual < preguntas.length) {
+        <button (click)="siguientePregunta()" class="anteriorsiguienteButton" [disabled]="!respuestaSeleccionada && preguntas[preguntaActual]?.tipoId == 1">Siguiente</button>
+      }
+    </div>
+
+    <div class="paginacion">
+      @if(preguntas[preguntaActual].tipoId == 2){
+        @for (pregunta of preguntas; track $index) {
+          <button [class.activa]="$index === preguntaActual"
+          (click)="irAPregunta($index)">{{$index + 1}}</button> 
+        }
+      }
+    </div>
+  </div>   
+  @if (finalizado) {
+    <app-pop-up-finalizar-cuestionario [popUpData]="this.popUpData"></app-pop-up-finalizar-cuestionario>
+  }
+</div>
+

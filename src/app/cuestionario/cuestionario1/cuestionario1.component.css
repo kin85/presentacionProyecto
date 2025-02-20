@@ -1,0 +1,231 @@
+.contenido {
+  position: relative;
+  padding: 20px;
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--fondo_secundario);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.cuestionario-container {
+  background-color: var(--fondo_principal);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.pregunta {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--texto_principal);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.respuestaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.respuestaContainer.siNo {
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.rango, .siNoButton {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  background-color: var(--elemento_principal);
+  color: var(--texto_elemento);
+}
+
+.siNoButton {
+  max-width: 300px;
+  min-width: 100px;
+}
+
+.rango:hover, .siNoButton:hover {
+  background-color: var(--resaltado);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.seleccionado {
+  background-color: var(--resaltado_hover);
+  color: var(--white);
+}
+
+.cargandoPreguntas {
+  text-align: center;
+  font-size: 16px;
+  color: var(--texto_terciario);
+}
+
+.controles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.anteriorsiguienteButton, .boton-finalizar {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--azul-base);
+  color: var(--white);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  flex: 1;
+  min-width: 120px;
+  max-width: 150px;
+  text-align: center;
+}
+
+.anteriorsiguienteButton[disabled], .boton-finalizar[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+.anteriorsiguienteButton[disabled]:hover, .boton-finalizar[disabled]:hover {
+  background-color: darkgray;
+  cursor: not-allowed;
+}
+
+.anteriorsiguienteButton:hover, .boton-finalizar:hover {
+  background-color: var(--azul-oscuro-1);
+  transform: translateY(-2px);
+}
+
+.paginacion {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.paginacion button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  background-color: var(--azul-muy-claro-3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.paginacion button.activa {
+  background-color: var(--resaltado);
+  color: var(--white);
+}
+
+.paginacion button:hover {
+  background-color: var(--azul-base);
+  transform: translateY(-2px);
+}
+
+.bloqueado .cuestionario-container {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.entrada {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.salida {
+  animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .contenido {
+    padding: 15px;
+    width: 95%;
+  }
+
+  .pregunta {
+    font-size: 18px;
+  }
+
+  .respuestaContainer {
+    flex-direction: column;
+  }
+
+  .respuestaContainer.siNo {
+    flex-direction: column;
+  }
+
+  .anteriorsiguienteButton, .boton-finalizar {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenido {
+    padding: 10px;
+  }
+
+  .pregunta {
+    font-size: 16px;
+  }
+
+  .rango, .siNoButton {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .anteriorsiguienteButton, .boton-finalizar {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

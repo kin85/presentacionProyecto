@@ -1,0 +1,68 @@
+
+<div class="container">
+    <h2>Listado de Usuarios</h2>
+    <!-- Desplegable de roles -->
+    <label for="roleFilter">Filtrar por rol:</label>
+
+    <select id="roleFilter" (change)="filtrarPorRol($event)">
+        <option value="">Seleccionar rol</option>
+
+        @for (rol of roles; track $index) {
+            <option [value]="rol">{{ rol }}</option>
+        }
+
+    </select>
+    <div class="form-inline1">
+        <button class="botones" [routerLink]="['/crear-usuario']">Crear Usuario</button>
+        <button class="botones" [routerLink]="['/usuarios-activos']">Usuarios Activos</button>
+    </div>
+    <form class="form-inline">
+        <input #searchInput type="search" class="form-control" placeholder="search">
+    </form>
+    @if (filteredUsers.length != 0) {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID 
+                        <button (click)="cambiarOrdenId()">
+                            {{ ordenId ? '⬆️' : '⬇️' }}
+                        </button>
+                    </th>
+                    <th>Usuario 
+                        <button (click)="cambiarOrdenNickname()">
+                            {{ ordenNickname ? '⬆️' : '⬇️' }}
+                        </button>
+                    </th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+    
+            <tbody>
+    
+                @for (user of filteredUsers; track $index) {
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.nickname }}</td>
+                        <td>{{ user.email }}</td>
+                        <td><button class="botones" [routerLink]="['/infoUser', user.id]">Mostrar</button></td>
+                        <td><button class="botones" (click)="borrarUsuario(user.id)">🗑️ Borrar</button></td>
+                        <td><button class="botones" [routerLink]="['/users-list/modificar', user.id]">✏️ Modificar</button></td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+    
+        <div class="pagination">
+            <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 0">Anterior</button>
+            <span>Página {{ currentPage + 1 }} de {{ totalPages }}</span>
+            <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage >= totalPages - 1">Siguiente</button>
+        </div>
+    }@else {
+        <h3>No se ha encontrado a ningun usuario.</h3>
+    }
+    
+</div>

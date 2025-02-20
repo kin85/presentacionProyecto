@@ -1,0 +1,58 @@
+<div class="acreditaciones-container">
+  <h1>Tus Acreditaciones</h1>
+  <table class="acreditaciones-table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Modulo</th>
+        <th>Asesor</th>
+        <th>Estado</th>
+        <th>Fecha de Actualización</th>
+        <th>Ver Información</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for ( acreditacion of acreditacionesBBDD?.content; track $index ) {
+      <tr>
+        <td>{{ acreditacion.id }}</td>
+        @for ( modulo of modulos?.content; track $index ) {
+          @if (modulo.id === acreditacion.modulo_id) {
+            <td>{{ modulo.nombre }}</td>
+          }
+        }
+        @if (acreditacion.asesor_id != null) {
+          @for ( asesor of asesores?.content; track $index ) {
+            @if (asesor.id === acreditacion.asesor_id) {
+              <td>{{ asesor.nombre }}</td>
+            }
+          }
+        } @else {
+          <td>Por definir</td>
+        }
+        <td [ngClass]="acreditacion.claseEstado">
+          {{ acreditacion.estado }}
+        </td>
+        @if (acreditacion.fecha_actualizacion != null) {
+          <td>{{ acreditacion.fecha_actualizacion | date: 'dd/MM/yyyy' }}</td>
+        } @else {
+          <td>Sin actualizaciones</td>
+        }
+        
+        <td>
+          <button type="button" class="revisar-btn" [routerLink]="['/detalle-acreditacion', acreditacion.id]">Revisar</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <div class="paginacion">
+    <button (click)="cambiarPagina(currentPage - 1)" [disabled]="currentPage === 0">Anterior</button>
+  
+    <button *ngFor="let page of pages" (click)="cambiarPagina(page)" [class.active]="page === currentPage">
+      {{ currentPage + 1 }}
+    </button>
+  
+    <button (click)="cambiarPagina(currentPage + 1)" [disabled]="currentPage === totalPages - 1">Siguiente</button>
+  </div>  
+</div>

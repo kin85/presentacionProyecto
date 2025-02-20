@@ -1,0 +1,22 @@
+<div class="perfil-usuario-card">    
+    <div class="perfil-usuario-info">
+      <div class="perfil-usuario-dato">
+        <label>Nombre:</label>
+        <span>{{ usuario.nombre }}</span>
+      </div>
+      
+      <div class="perfil-usuario-dato">
+        <label>Email:</label>
+        <span>{{ usuario.email }}</span>
+      </div>
+      
+      <div class="perfil-usuario-dato">
+        <label>Teléfono:</label>
+        <span>{{ usuario.telefono }}</span>
+      </div>
+      <div class="documentos">
+        <button class="docInput" type="button" [routerLink]="['/documentosUser']">Actualizar documentos</button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,98 @@
+.acreditaciones-container {
+  background-color: var(--fondo_secundario);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+  height: 100%;
+}
+
+div h1 {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+  color: var(--titulos);
+  font-size: 2rem;
+}
+
+.acreditaciones-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--azul-claro-2);
+  border-radius: 8px;
+}
+
+.acreditaciones-table th,
+.acreditaciones-table td {
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+  color: var(--texto_principal);
+}
+
+.acreditaciones-table th {
+  background-color: var(--azul-muy-claro-3);
+  font-weight: 600;
+  color: var(--texto_principal);
+}
+
+.acreditaciones-table td {
+  background-color: var(--fondo_principal);
+}
+
+.revisar-btn {
+  padding: 10px;
+  background-color: var(--azul-base);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.revisar-btn:hover {
+  background-color: var(--azul-oscuro-1);
+}
+
+.aprobado {
+  color: var(--azul-base) !important;
+  font-weight: bold;
+}
+
+.pendiente {
+  color: var(--resaltado) !important;
+  font-weight: bold;
+}
+
+.rechazado {
+  color: var(--resaltado_hover) !important;
+  font-weight: bold;
+}
+
+.paginacion {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.paginacion button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  background-color: var(--azul-base);
+  color: var(--white);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.paginacion button:hover {
+  background-color: var(--azul-oscuro-1);
+}
+
+.paginacion button:disabled {
+  background-color: var(--azul-muy-claro-2);
+  cursor: not-allowed;
+}

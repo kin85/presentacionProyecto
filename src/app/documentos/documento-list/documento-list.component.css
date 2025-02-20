@@ -1,0 +1,82 @@
+.lista-documentos {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--fondo_principal);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.lista-documentos h2 {
+    color: var(--titulos);
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.documento-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    margin-bottom: 10px;
+    background-color: var(--fondo_secundario);
+    border-left: 5px solid var(--elemento_principal);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.documento-item:hover {
+    background-color: var(--azul-muy-claro-1);
+}
+
+.documento-info p {
+    margin: 0;
+    color: var(--texto_principal);
+}
+
+.documento-acciones {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    background-color: var(--elemento_principal);
+    color: var(--texto_elemento);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+button:hover {
+    background-color: var(--azul-medio-oscuro);
+}
+
+button.borrar-documento {
+    background-color: var(--resaltado);
+}
+
+button.borrar-documento:hover {
+    background-color: var(--resaltado_hover);
+}
+
+svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--texto_elemento);
+}
+
+@media (max-width: 768px) {
+    .documento-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .documento-acciones {
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Formulario de preasesoramiento</h2>
+    <form [formGroup]="cuestionarioForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="preguntas">
+        @for (item of preguntas; track $index) {
+            <div class="form-group">
+                <label>{{ item.texto }}</label>
+                <div class="options">
+                    <input type="radio" id="si_{{ $index }}" [formControlName]="'respuestas.' + $index" value="si">
+                    <label for="si_{{ $index }}">Sí</label>
+                    <input type="radio" id="no_{{ $index }}" [formControlName]="'respuestas.' + $index" value="no">
+                    <label for="no_{{ $index }}">No</label>
+                </div>
+            </div>
+        }
+        </div>
+        <button type="submit" class="button" >Enviar</button>
+    </form>
+</div>

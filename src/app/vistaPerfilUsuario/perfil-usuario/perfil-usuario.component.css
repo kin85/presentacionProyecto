@@ -1,0 +1,46 @@
+.perfil-usuario-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
+    grid-template-rows: repeat(4, auto);  /* 4 filas automáticas */
+    grid-template-areas:
+      "datos   acreditaciones acreditaciones acreditaciones"  /* Se asegura que 'mensajes' ocupe las 3 columnas */
+      "datos acreditaciones acreditaciones acreditaciones"
+      "datos acreditaciones acreditaciones acreditaciones"
+      "selects acreditaciones acreditaciones acreditaciones"; /* Última fila libre por si quieres agregar algo */
+    gap: 20px;
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+/* Asignación de áreas */
+.datos-usuario {
+    grid-area: datos;
+}
+
+.selects {
+  grid-area: selects;
+}
+
+.tabla-acreditaciones {
+    grid-area: acreditaciones;
+}
+
+.mensajes {
+    grid-area: mensajes; /* 'mensajes' ocupa 3/4 partes del espacio */
+}
+
+
+  
+  /* Diseño responsivo para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .perfil-usuario-container {
+      grid-template-columns: 1fr; 
+      grid-template-areas:
+        "datos"
+        "acreditaciones"
+        "selects";
+    }
+  }
+  

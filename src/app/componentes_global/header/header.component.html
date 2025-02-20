@@ -1,0 +1,72 @@
+<nav class="nav">
+  <img src="/image.png" alt="Logo" class="logo" />
+    <!-- Botón de menú para pantallas pequeñas -->
+  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  <div class="nav-links" [ngClass]="{ active: isMenuOpen }">
+      @if (!isLoggedIn) {
+        <!-- rutas en caso del que el usuario NO ESTE LOGEADO -->
+        <a [routerLink]="['/inicio']" routerLinkActive="router-link-active">Inicio</a>
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active">Login/SignUp</a>
+      }@else { 
+
+        @if ( hayAdmin == true) {
+          <a [routerLink]="['/home']" routerLinkActive="router-link-active">Inicio</a>
+        }@else{
+          <a [routerLink]="['/inicio']" routerLinkActive="router-link-active">Inicio</a>
+        }
+        
+        @for (rol of userRole; track $index) { 
+          @if ( rol === 'USUARIO') {
+            <!-- rutas en caso del que el usuario sea rol USUARIO-->
+            
+            
+          }@else if ( rol === 'ASESOR') {
+            <!-- rutas en caso del que el usuario sea rol SUPERVISOR-->
+            
+
+          }@else if ( rol === 'SUPERVISOR') {
+            <!-- rutas en caso del que el usuario sea rol SUPERVISOR-->
+            <a [routerLink]="['/admin']" routerLinkActive="router-link-active">Panel SUPERVISOR</a>
+            <a [routerLink]="['/estadisticas']" routerLinkActive="router-link-active">estadisticas SUPERVISOR</a>
+            
+
+          }@else if ( rol === 'ACREDITADOR') {
+            <!-- rutas en caso del que el usuario sea rol ACREDITADOR-->
+            
+
+          }@else if ( rol === 'EVALUADOR') {
+            <!-- rutas en caso del que el usuario sea rol EVALUADOR-->
+            
+
+          }@else if ( rol === 'PROFESOR') {
+            <!-- rutas en caso del que el usuario sea rol PROFESOR-->
+            
+
+          }@else if ( rol === 'JEFEDPTO') {
+            <!-- rutas en caso del que el usuario sea rol JEFEDPTO-->
+            
+
+          }@else if ( rol === 'JEFEESTUDIOS') {
+            <!-- rutas en caso del que el usuario sea rol JEFEESTUDIOS-->
+            
+
+          }@else if ( rol ==='ADMINISTRADOR') {
+            <!-- rutas en caso del que el usuario sea rol ADMINISTRADOR-->
+
+            
+            <a [routerLink]="['/users-list']">Lista Usuarios</a>
+            <a [routerLink]="['/users-list-block']">Usuarios bloqueados</a>
+         
+          }@else {
+            <!-- rutas en caso de error por logear y no tener ningun rol-->
+            <h2>Error en la app.</h2>
+          }
+        } 
+        <a (click)="logout()">Logout</a>
+      }
+  </div>
+
+  <div class="img-section">
+    <img id="imagenChatbot" src="/logoProy-removebg-preview.png" />
+  </div>
+</nav>

@@ -1,0 +1,14 @@
+<div class="popUpFin">
+
+    @if (popUpData.tipo == 2) {
+        <p>Cuestionario completado</p>
+        <button [routerLink]="['/perfil']"> Volver a perfil </button>
+    }@else if (!popUpData.puedeAcreditar) {
+        <p>{{popUpData.mensaje}}</p>
+        <button [routerLink]="['/inicio']">Volver a inicio</button>
+    }@else if (popUpData.puedeAcreditar) {
+        <p>{{popUpData.mensaje}}</p>
+        <button [routerLink]="['/registro']"> Ir a registro </button>
+    }
+
+</div>

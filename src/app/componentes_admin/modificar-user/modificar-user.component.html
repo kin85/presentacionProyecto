@@ -1,0 +1,103 @@
+<form [formGroup]="formulario" (ngSubmit)="actualizarUsuario()">
+  <div class="container">
+    <div class="login-box">
+      <button class="back-btn" [routerLink]="['/users-list']">⬅️ Volver</button>
+
+      <form [formGroup]="formulario" (ngSubmit)="actualizarUsuario()">
+
+        <h2>Actualizar un usuario</h2>
+
+        <!-- Nickname -->
+        <div class="input-group">
+          <label for="nickname">Nickname:</label>
+          <input id="nickname" type="text" formControlName="nickname" class="form-control"/>
+          
+          @if (formSubmitted && formulario.get('nickname')?.invalid) {
+            <div class="invalid-feedback">
+              El nickname es obligatorio.
+            </div>
+          }
+        </div>
+      
+        <!-- Nombre -->
+        <div class="input-group">
+          <label for="nombre">Nombre:</label>
+          <input id="nombre" type="text" formControlName="nombre" class="form-control"/>
+          
+          @if (formSubmitted && formulario.get('nombre')?.invalid) {
+            <div class="invalid-feedback">
+              El nombre es obligatorio.
+            </div>
+          }
+        </div>
+      
+        <!-- Email -->
+        <div class="input-group">
+          <label for="email">Email:</label>
+          <input id="email" type="email" formControlName="email" class="form-control"/>
+          
+          @if (formSubmitted && formulario.get('email')?.invalid) {
+            @if (formulario.get('email')?.errors?.['required']) {
+              <div class="invalid-feedback">
+                El email es obligatorio.
+              </div>
+            }
+            @if (formulario.get('email')?.errors?.['email']) {
+              <div class="invalid-feedback">
+                El email no es válido.
+              </div>
+            }
+          }
+        </div>
+      
+      
+        <!-- Teléfono -->
+        <div class="input-group">
+          <label for="telefono">Teléfono:</label>
+          <input id="telefono" type="text" formControlName="telefono" class="form-control"/>
+          
+          @if (formSubmitted && formulario.get('telefono')?.invalid) {
+            @if (formulario.get('telefono')?.errors?.['required']) {
+              <div class="invalid-feedback">
+                El teléfono es obligatorio.
+              </div>
+            }
+            @if (formulario.get('telefono')?.errors?.['pattern']) {
+              <div class="invalid-feedback">
+                El teléfono debe tener 9 dígitos numéricos.
+              </div>
+            }
+          }
+        </div>
+
+        <!-- Roles -->
+        @if (rolesActivos.length > 0) {
+          <label>Roles:</label>
+          <div>
+            @for (rol of rolesActivos; track rol.id) {
+              <button 
+                type="button" 
+                (click)="toggleRole(rol.id)" 
+                [class.selected]="formulario.value.rolesIds.includes(rol.id)">
+                {{ rol.nombre }}
+              </button>
+            }
+          </div>
+        }
+
+        @if (messageError != '') {
+          <div>{{ messageError }}</div>
+        }
+  
+        <!-- Botón de registro -->
+        <button type="submit" class="register-button">
+          Crear
+        </button>
+  
+      </form>
+      
+    </div>
+  
+  </div>
+
+  

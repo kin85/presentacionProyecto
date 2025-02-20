@@ -1,0 +1,47 @@
+<div class="contenido">
+    <div class="formulario-contenedor">
+      <h2>Subir Documento</h2>
+      <form [formGroup]="createForm" class="formulario-creacion">
+        <label for="nombreFichero">Nombre del Documento</label>
+        <input type="text" id="nombreFichero" formControlName="nombreFichero" [ngClass]="{
+              'is-valid':!nombreFicheroValid,
+              'is-invalid':nombreFicheroValid
+            }" required>
+
+        <label for="tipo_documento">Tipo de documento</label>
+        <select id="tipo_documento" formControlName="tipo_documento" [ngClass]="{'is-valid':!nombreFicheroValid,'is-invalid':nombreFicheroValid}" required>
+          <option value="" disabled selected>Selecciona el tipo de fichero</option>
+          <option value="DNI">DNI</option>
+          <option value="Curriculum Vitae">Curriculum Vitae</option>
+          <option value="Certificado">Certificado</option>
+        </select>
+
+        <label for="comentario">Comentario (opcional)</label>
+        <input type="text" id="comentario" formControlName="comentario" [ngClass]="{
+              'is-valid':!nombreFicheroValid,
+              'is-invalid':nombreFicheroValid
+            }" >
+
+        <!-- Área de arrastre y clic mejorada -->
+        <div class="drop-area" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)"
+          (click)="triggerFileInput()">
+          <p id="drop-text">{{ file?.name || "Arrastra y suelta un archivo aquí o haz clic para seleccionar" }}</p>
+          <input type="file" id="file" name="file" (change)="onFileSelected($event)" hidden>
+        </div>
+
+        @if(intentoSubida && file == null){
+        <p class="error-message">⚠ No se ha subido ningún archivo</p>
+        }
+        @if (error) {
+        <p class="error-message">⚠ {{ error }}</p>
+        }
+
+        <div class="centro">
+          <div class="botones">
+            <button type="button" (click)="subir()" class="guardar">Subir</button>
+            <button type="button" (click)="borrarArchivo()" class="borrar">Borrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

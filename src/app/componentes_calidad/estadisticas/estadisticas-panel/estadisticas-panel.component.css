@@ -1,0 +1,52 @@
+.mainBento {
+  display: grid;
+  grid-template-areas: 
+    "grafica grafica grafica filtros"
+    "grafica grafica grafica filtros"
+    "grafica grafica grafica filtros"
+    "grafica grafica grafica filtros";
+  gap: 16px;
+  padding: 16px;
+  background-color: #f9f9f9; 
+  border-radius: 12px;
+}
+
+.bento-item {
+  background-color: #ffffff; 
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0; 
+}
+
+.bento-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); 
+}
+
+.grafica {
+  height: 80vh;
+  width: 75vw;
+  background-color: var(--fondo_principal);; 
+}
+
+.filtros {
+  background-color: var(--fondo_terciario); 
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
+
+app-filtros{
+  height: -webkit-fill-available;
+}
+
+.bento-item,
+#filtros *,
+.container select,
+button#apply-stats {
+  transition: all 0.3s ease;
+}

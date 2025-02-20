@@ -1,0 +1,45 @@
+<div class="filters-container">
+
+    <div id="filtros" [class.open]="showFilters">
+        <select class="select_user" name="usuario" [(ngModel)]="filtros.filterUser">
+            <option value="">Usuario</option>
+            @for (user of users; track $index) {
+                <option>{{ user }}</option>
+            }
+        </select>
+
+        <input type="date" [(ngModel)]="fechaInicio"/>
+        <input type="date" [(ngModel)]="fechaFin"/>
+
+        <input type="text" [(ngModel)]="filtros.filterPregunta" placeholder="Question"/>
+        <input type="text" [(ngModel)]="filtros.filterRespuesta" placeholder="Answer"/>
+
+        <select name="chunk" [(ngModel)]="filtros.filterChunk">
+            <option value="">Chunk</option>
+            @for (chunk of chunks; track $index) {
+                <option [value]="chunk">{{ chunk }}</option>
+            }
+        </select>
+
+        <select name="valorados" [(ngModel)]="filtros.filterValorado">
+            <option value="">Todos</option>
+            <option value="sin_valorar">Sin valorar</option>
+            <option value="valorado">Valorados</option>
+        </select>
+
+        
+        <select [ngClass]="{'show': filtros.filterValorado == 'valorado'}"
+            *ngIf="filtros.filterValorado === 'valorado'"
+            [(ngModel)]="filtros.filterFeedback"
+            name="valor">
+            <option value="">Ambos</option>
+            <option value="BIEN">Bien</option>
+            <option value="MAL">Mal</option>
+        </select>
+
+        <button (click)="aplicarFiltros()" id="apply-filters">Apply</button>
+    </div>
+    <button (click)="toggleFilters()" id="toggle-filters">
+        {{ showFilters ? '▲' : '▼' }}
+    </button>
+</div>

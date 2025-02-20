@@ -1,0 +1,84 @@
+.chat-list-container {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.chat-item {
+  padding: 10px;
+  border-bottom: 1px solid var(--resaltado);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  position: relative;
+  margin-right: 10px;
+}
+
+.chat-item:hover {
+  background-color: #e01e001b ;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.105);
+}
+
+.filters-container {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-out, opacity 0.3s ease-out;
+}
+
+.filters-container.show {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  margin-left: 5px;
+  width: auto;
+  padding: 5px 10px;
+  background-color: var(--elemento_principal)  ;
+  color: var(--texto_elemento);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.462);
+  transition: 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #1e3644;
+
+}
+
+.borrarButton {
+  visibility: hidden;
+  position: absolute;
+  right: 0%;
+  color: var(--black);
+  background: none;
+  box-shadow: none;
+}
+
+.borrarButton:hover{
+  color: var(--resaltado);
+}
+
+.chat-item:hover .borrarButton {
+  visibility: visible;
+  background: none;
+}
+
+#new-chat {
+  font-size: 1.5em;
+}

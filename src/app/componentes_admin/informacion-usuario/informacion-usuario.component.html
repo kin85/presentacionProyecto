@@ -1,0 +1,50 @@
+<div class="user-container">
+  <div class="user-card" [ngClass]="{
+      'activo': user?.estado === 'activo',
+      'suspendido': user?.estado === 'suspendido',
+      'pendiente': user?.estado === 'pendiente',
+      'inactivo': user?.estado === 'inactivo'
+  }">
+  @if (user) {
+      <div class="user-details">
+          <h2>{{ user.nombre }}</h2>
+          <h4 class="inline">Nombre:</h4><p class="inline"> {{ user.nickname }}</p><br>
+          <h4 class="inline">Estado:</h4>
+          <p class="inline"
+              [ngClass]="{
+                  'estado-activo': user.estado === 'activo',
+                  'estado-suspendido': user.estado === 'suspendido',
+                  'estado-pendiente': user.estado === 'pendiente',
+                  'estado-inactivo': user.estado === 'inactivo'
+              }">
+              {{ user.estado }}
+          </p>
+          <p class="email">📧 {{ user.email }}</p>
+          <p class="telefono">📞 {{ user.telefono }}</p>
+          <h4 class="inline">Id:</h4><p class="inline"> {{ user.id }}</p>
+          <h4>Roles:</h4>
+          @for (rol of rols; track $index) {
+              @for (item of user.roleIds; track $index) {
+                  @if (rol.id == item) {
+                      <p>{{ rol.nombre }}</p>
+                  }
+              }
+          }
+      </div>
+    }@else {
+      <!-- Aqui por si no existe o no llega usuario -->
+    }
+
+  </div>
+
+  <a [routerLink]="['/users-list']">Volver</a>
+
+  @if (user) {
+    <app-actividad-usuario [idUser] = "user.id"></app-actividad-usuario>
+
+  }
+
+    
+
+ 
+

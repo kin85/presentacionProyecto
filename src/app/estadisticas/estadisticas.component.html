@@ -1,0 +1,21 @@
+<h1>Estadísticas de Pedro</h1>
+
+<div class="container">
+    <div class="contenedor-chart">
+        <h2>Resumen de Acreditaciones</h2>
+        <canvas #acreditacionesChart></canvas>
+    </div>
+    
+    <div class="contenedor-porcentajes">
+        <h2>Porcentajes de Acreditaciones</h2>
+        <div class="porcentaje-item">
+            <span>Aceptadas:</span> <span>{{ porcentajeAceptadas }}%</span>
+        </div>
+        <div class="porcentaje-item">
+            <span>Denegadas:</span> <span>{{ porcentajeDenegadas }}%</span>
+        </div>
+        <div class="porcentaje-item">
+            <span>Pendientes:</span> <span>{{ porcentajePendientes }}%</span>
+        </div>
+    </div>
+</div>

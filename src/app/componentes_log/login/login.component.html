@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="login-box">
+    <form #userForm="ngForm" (ngSubmit)="sendLogin()">
+      <h2>Iniciar sesión</h2>
+
+      <!-- Email -->
+      <div class="input-group">
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          pattern=".*@.*"
+          required
+          id="email"
+          #emailInput="ngModel"
+        />
+        
+      </div>
+
+      <!-- Password -->
+      <div class="input-group">
+        <label>Contraseña:</label>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          id="password"
+          #passwordInput="ngModel"
+        />
+      </div>
+
+      @if (errorMessage) {
+        <div class="invalid-feedback">{{ errorMessage }}</div>
+      }
+
+      <!-- Login Button -->
+      <button type="submit" class="login-button">Iniciar sesión</button>
+
+      <!-- Register Link -->
+      <a class="register-link" [routerLink]="['/registro']">Crear cuenta</a>
+    </form>
+  </div>
+
+  <!-- Text Section -->
+  <div class="text-section">
+    <h1>ChatBot</h1>
+    <h2>RAG</h2>
+  </div>
+</div>

@@ -1,0 +1,210 @@
+/* Estilos generales */
+.body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--fondo_principal);
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.titulo h1 {
+    color: var(--titulos);
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.contenido {
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Lista de documentos */
+.lista-documentos {
+    flex: 1;
+    background: var(--fondo_secundario);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.lista-documentos h2 {
+    color: var(--titulos);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.documento-item {
+    background: var(--fondo_secundario);
+    border: 1px solid var(--azul-muy-claro-2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.documento-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.documento-info p {
+    margin: 0.25rem 0;
+    color: var(--texto_principal);
+    font-size: 0.9rem;
+}
+
+.documento-info strong {
+    color: var(--texto_secundario);
+}
+
+.documento-acciones {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.documento-acciones button {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--resaltado);
+    transition: color 0.2s ease;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.documento-acciones button:hover {
+    color: var(--resaltado_hover);
+    background-color: var(--azul-muy-claro-3);
+}
+
+/* Formulario */
+.formulario-contenedor {
+    flex: 1;
+    background: var(--fondo_secundario);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-contenedor h2 {
+    color: var(--titulos);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.formulario-creacion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.formulario-creacion label {
+    color: var(--texto_secundario);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.formulario-creacion input,
+.formulario-creacion select {
+    padding: 0.75rem;
+    border: 1px solid var(--azul-muy-claro-2);
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.2s ease;
+}
+
+.formulario-creacion input:focus,
+.formulario-creacion select:focus {
+    outline: none;
+    border-color: var(--resaltado);
+    box-shadow: 0 0 0 2px rgba(255, 80, 0, 0.2);
+}
+
+/* Drop area */
+.drop-area {
+    border: 2px dashed var(--azul-muy-claro-2);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--fondo_principal);
+}
+
+.drop-area:hover,
+.drop-area.dragover {
+    border-color: var(--resaltado);
+    background-color: var(--azul-muy-claro-3);
+}
+
+#drop-text {
+    color: var(--texto_secundario);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Botones */
+.botones {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.guardar,
+.borrar {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex: 1;
+}
+
+.guardar {
+    background-color: var(--resaltado);
+    color: white;
+}
+
+.guardar:hover {
+    background-color: var(--resaltado_hover);
+}
+
+.borrar {
+    background-color: var(--azul-muy-claro-2);
+    color: var(--texto_principal);
+}
+
+.borrar:hover {
+    background-color: var(--azul-muy-claro-1);
+}
+
+/* Validación */
+.error-message {
+    color: var(--resaltado_hover);
+    font-size: 0.8rem;
+    margin-top: -0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenido {
+        flex-direction: column;
+    }
+    
+    .lista-documentos,
+    .formulario-contenedor {
+        width: 100%;
+    }
+}

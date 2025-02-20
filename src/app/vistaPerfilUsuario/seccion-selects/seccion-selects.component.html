@@ -1,0 +1,58 @@
+<div class="perfil-usuario-card">    
+  <div class="perfil-usuario-info">
+    <div class="perfil-usuario-dato">
+      <label>Sector:</label>
+      <select [(ngModel)]="sectorSeleccionado" (ngModelChange)="asignarCuestionario()">
+        @for (sector of sector; track $index) {
+          <option [value]="sector.id">{{ sector.nombre }}</option>
+        }
+      </select>
+    </div>
+    
+    <div class="perfil-usuario-dato">
+      <label>Nivel:</label>
+      <select [(ngModel)]="nivel" (ngModelChange)="asignarCuestionario()">
+        @if (!sectorSeleccionado) {
+          <option value="" disabled >Debes seleccionar un sector</option> 
+        }@else{
+          <option value="1" selected>Nivel I</option>
+          <option value="2">Nivel II</option>
+          <option value="3">Nivel III</option>
+        }
+      </select>
+    </div>
+    
+    <div class="perfil-usuario-dato">
+      <label>Módulo:</label>
+      <select [(ngModel)]="moduloSeleccionado" (ngModelChange)="asignarCuestionario()" >
+        @if (!sectorSeleccionado || !nivel) {
+          <option value="" disabled >Debes seleccionar un sector y un nivel</option> 
+        }@else{
+        @for (modulo of modulos; track $index) {
+          @if (modulo.nivel == nivel && modulo.sector_id == sectorSeleccionado) {
+            <option [value]="modulo.id">{{ modulo.nombre }}</option>
+          }
+        }
+      }
+      </select>
+    </div>
+
+    <div class="perfil-usuario-dato">
+      <label>U.C:</label>
+      <select [(ngModel)]="UCSeleccionada" (ngModelChange)="asignarCuestionario()">
+        @if (!moduloSeleccionado) {
+          <option value="" disabled >Debes seleccionar un módulo</option> 
+        }
+        @for (uc of unidadesCompetencia; track $index) {
+          @if (uc.modulo_id == moduloSeleccionado) {
+            <option [value]="uc.id">{{uc.id}}-{{ uc.nombre }}</option>
+          }
+        }
+      </select>
+    </div>
+
+    <div class="perfil-usuario-boton">
+      <button [routerLink]="['/cuestionario', cuestionarioSeleccionado, idUsuario]" [disabled]="!cuestionarioSeleccionado">Realizar Cuestionario</button>
+    </div>
+  </div>
+</div>

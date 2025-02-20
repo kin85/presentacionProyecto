@@ -1,0 +1,38 @@
+<div class="table-container">
+  @if (arrayActividadUsuario.length != 0) {
+  <h2>Historial de Auditoría</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tipo de Evento</th>
+        <th>Tabla Afectada</th>
+        <th>Dato Anterior</th>
+        <th>Dato Nuevo</th>
+        <th>Descripción</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- consegimos filtrar el array para que nos aparezcan solo los eventos del dia de hoy contando desde las 00:00-->
+      @for (actividad of arrayActividadUsuario | filtradoDiaEventos; track
+      $index) { @if ($index < 10) {
+
+      <tr>
+        <td>{{ actividad.id }}</td>
+        <td>{{ actividad.tipoEvento }}</td>
+        <td>{{ actividad.tablaAfectada }}</td>
+        <td class="null">{{ actividad.datoAnterior }}</td>
+        <td>{{ actividad.datoNuevo }}</td>
+        <td>{{ actividad.descripcion }}</td>
+        <td>{{ actividad.fecha }}</td>
+      </tr>
+
+      } }
+    </tbody>
+  </table>
+  }@else {
+  <h3>No hay registro de actividad.</h3>
+  }
+</div>

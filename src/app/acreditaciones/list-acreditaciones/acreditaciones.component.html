@@ -1,0 +1,45 @@
+<h1>Acreditaciones de Pedro</h1>
+
+
+<div class="stats">
+    <h2>Visualizar estadisticas</h2>
+    <button [routerLink]="['/estadisticas', 2]">Visualizar</button>
+</div>
+
+<div class="container-wrapper">
+    <div class="container pendientes">
+        <h2>Acreditaciones pendientes</h2>
+        @for (acreditacion of acreditacionesArray; track $index) {
+            @if (acreditacion.asesor_id === null) {
+                @for (modulo of modulosArray; track $index) {
+                    @if (modulo.id === acreditacion.modulo_id) {
+                        <div class="acreditacion-item">
+                            <h3>ID: {{acreditacion.id}}</h3>
+                            <p>Módulo: {{modulo.nombre}}</p>
+                            <p>Usuario: {{acreditacion.usuario_id}}</p>
+                            <button type="button" (click)="asignarAcreditacion(acreditacion.id, acreditacion.usuario_id, acreditacion.modulo_id)">Asignar</button>
+                        </div>
+                    }
+                }
+            }
+        }
+    </div>
+<!-- comprobar con id_asesor_sesion -->
+    <div class="container asignadas">
+        <h2>Acreditaciones asignadas</h2>
+        @for (acreditacion of acreditacionesArray; track $index) {
+            @if (acreditacion.asesor_id === 1) {
+                @for (modulo of modulosArray; track $index) {
+                    @if (modulo.id === acreditacion.modulo_id) {
+                        <div class="acreditacion-item">
+                            <h3>ID: {{acreditacion.id}}</h3>
+                            <p>Módulo: {{modulo.nombre}}</p>
+                            <p>Usuario: {{acreditacion.usuario_id}}</p>
+                            <button type="button" [routerLink]="['/detalle-acreditacion', acreditacion.id]">Ver</button>
+                        </div>
+                    }
+                }
+            }
+        }
+    </div>
+</div>

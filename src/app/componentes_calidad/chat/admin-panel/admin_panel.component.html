@@ -1,0 +1,22 @@
+	<!--<app-header></app-header>-->
+
+	<div class="filters">
+		<app-filters (filtersToggled)="onFiltersToggled($event)"></app-filters>
+	</div>
+
+	<div class="chat-container" [ngStyle]="{ 'height': chatContainerHeight }">
+		<div class="chat-list" [ngStyle]="{ 'width': chatListWidth + 'px' }">
+			<app-chat-list (seleccionarChat)="alSeleccionarChat($event)"></app-chat-list>
+			
+			<div class="resize-handle" (mousedown)="startResizing($event)"></div>
+		</div>
+
+		<div class="main-chat">
+			<app-main-chat [idChat]="idChatSeleccionado"></app-main-chat>
+		</div>
+	</div>
+
+	<div id="footerToggle" (click)="hideComponent()">
+    {{ showFooter ? 'Menos' : 'Más' }} Info - Rag2Daw2025
+  </div>
+  <!--<app-footer *ngIf="showFooter"></app-footer>-->

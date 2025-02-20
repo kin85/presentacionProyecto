@@ -1,0 +1,96 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--fondo_terciario);
+  padding: 0px 30px;
+  box-shadow: 5px 5px 10px rgba(70,70,70,0.5);
+  font-family: 'Poppins', sans-serif;
+}
+
+.logo {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 5px; /* Reducido de 20px a 5px */
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+.nav-links a {
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: var(--azul-medio);
+  background-color: transparent;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  transition: 0.5s;
+}
+
+.nav-links a:hover {
+  background-color: var(--texto_elemento);
+  color: var(--azul-oscuro-1);
+}
+
+.router-link-active {
+  background-color: blue;
+  color: white;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.img-section {
+  display: flex;
+  align-items: center;
+  margin-left: 5px; /* Reducido de 20px a 5px */
+  flex: 0 0 auto;
+}
+
+#imagenChatbot {
+  width: 125px;
+  height: auto;
+}
+
+@media (max-width: 800px) {
+  .nav {
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en lugar de apilarse */
+    padding: 5px 15px; /* Reduce el padding */
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px; /* Reduce el espacio entre los enlaces */
+    margin: 5px 0; /* Menos margen superior e inferior */
+    display: none;
+  }
+  
+  .img-section {
+    margin-top: 5px; /* Reduce el espacio entre la imagen y los enlaces */
+  }
+  
+  .menu-toggle {
+    display: block;
+    margin-bottom: 5px; /* Espacio más compacto con respecto a otros elementos */
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+}

@@ -1,0 +1,26 @@
+<div class="mensajes-container">
+    <table class="mensajes-table">
+      <thead>
+        <tr>
+          <th>Remitente</th>
+          <th>Rol</th>
+          <th>Contenido</th>
+          <th>Fecha</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mensaje of mensajes">
+          <td>{{ mensaje.remitente }}</td>
+          <td>{{ mensaje.rol }}</td>
+          <td>{{ mensaje.contenido }}</td>
+          <td>{{ mensaje.fecha | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td>
+            <button class="responder-btn">Responder</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  

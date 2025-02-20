@@ -1,0 +1,113 @@
+.main-chat-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    max-height: 91vh;
+  }
+  
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+  
+  .chat-message-group {
+    flex: 1;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .message {
+    max-width: 70%;
+    padding: 12px;
+    border-radius: 15px;
+    position: relative;
+    margin: 5px; 
+    word-break: break-all;
+  }
+  
+  .user-message {
+    align-self: flex-end; 
+    background-color: var(--azul-medio);
+    color: var(--white);
+  }
+  
+  .bot-message {
+    align-self: flex-start; 
+    background-color: var(--resaltado);
+    color: var(--white);
+  }
+  
+  .chat-input {
+    padding: 10px;
+    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.462);
+    border-radius: 20px;
+    background-color: var(--fondo_terciario);
+    display: flex;
+    gap: 8px;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--fondo_secundario);
+    border-radius: 15px;
+    font-size: 14px;
+    border: 2px outset rgb(255, 106, 0);
+  }
+  
+  .chat-input button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: var(--azul-medio);
+    color: var(--white);
+    border-radius: 15px;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .chat-input button:hover {
+    background-color: var(--azul-medio-oscuro);
+  }
+
+
+  /* RATING */
+  .rating {
+    height: 30px;
+    width: 30px;
+    margin: 3px 5px;
+    border: 0px;
+    border-radius: 12px;
+    transition: 0.3s ease;
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  .rating > svg {
+    height: 20px;
+    width: 20px;
+  }
+
+  .rating:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.244);
+  }
+
+
+  .bien{
+    background-color: rgb(17, 145, 17) !important;
+  }
+
+  .mal{
+    background-color: rgb(218, 59, 59) !important;
+  }
+
+  .bien:hover, .mal:hover{
+    cursor: auto;
+   }

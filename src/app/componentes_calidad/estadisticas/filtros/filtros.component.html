@@ -1,0 +1,68 @@
+<div class="filters-container">
+
+    <div id="filtros">
+
+        Filtrar los datos
+
+        <select class="select_user" name="usuario" [(ngModel)]="filtros.filterUser">
+            <option value="">User</option>
+            @for (user of users; track $index) {
+            <option>{{ user }}</option>
+            }
+        </select>
+
+        <input type="date" [(ngModel)]="fechaInicio" />
+        <input type="date" [(ngModel)]="fechaFin" />
+
+        <input type="text" [(ngModel)]="filtros.filterPregunta" placeholder="Question" />
+        <input type="text" [(ngModel)]="filtros.filterRespuesta" placeholder="Answer" />
+
+        <select name="chunk" [(ngModel)]="filtros.filterChunk">
+            <option value="">Chunk</option>
+            @for (chunk of chunks; track $index) {
+            <option [value]="chunk">{{ chunk }}</option>
+            }
+        </select>
+
+        <select name="valorados" [(ngModel)]="filtros.filterValorado">
+            <option value="">Todos</option>
+            <option value="sin_valorar">Sin valorar</option>
+            <option value="valorado">Valorados</option>
+        </select>
+
+
+        <select [ngClass]="{'show': filtros.filterValorado == 'valorado'}"
+            *ngIf="filtros.filterValorado === 'valorado'" [(ngModel)]="filtros.filterFeedback" name="valor">
+            <option value="">Ambos</option>
+            <option value="BIEN">Bien</option>
+            <option value="MAL">Mal</option>
+        </select>
+
+    </div>
+
+    <div class="container">
+        Agrupar por
+
+        <select name="Agrupar" [(ngModel)]="selectedGroup" required >
+            <option value="chat_user" >chat_user</option>
+            <option value="contexto">contexto</option>
+            <option value="feedback">valoracion</option>
+            <option value="pregunta_fecha">pregunta_fecha</option>
+            <option value="texto_pregunta">texto_pregunta</option>
+            <option value="texto_respuesta">texto_respuesta</option>
+            <option value="id_documentchunk">id_documentchunk</option>
+        </select>
+       
+    </div>
+
+    <div class="container">
+        Gráfico
+        <select name="grafico" id="" [(ngModel)]="graphSelected">
+
+            <option value="pie">Pie chart</option>
+            <option value="line">Line graph</option>
+        </select>
+    </div>
+
+    <button (click)="aplicarEstadisticas()" id="apply-stats">Apply</button>
+</div>

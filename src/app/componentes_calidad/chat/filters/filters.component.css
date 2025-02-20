@@ -1,0 +1,109 @@
+.filters-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    z-index: 1;
+}
+
+#toggle-filters {
+    background: var(--azul-medio);
+    color:var(--white);
+    border: none;
+    padding: 3px 12px;
+    font-size: 14px;
+    border-radius: 0px 0px 20px 20px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.334);
+
+}
+
+#toggle-filters:hover {
+    background: var(--azul-medio-oscuro);
+}
+
+#filtros {
+    overflow: hidden;
+    max-height: 0;
+    transition: 0.4s;
+    background: var(--fondo_terciario);
+    padding: 0px 10px;
+    border-radius: 0px 0px 35px 35px;
+    max-width: 100vw;
+    text-align-last: center;
+}
+
+#filtros.open {
+    transition: 0.5s;
+    width: max-content;
+    max-height: 500px;
+    padding: 20px;
+    box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.289);
+    max-width: 100vw;
+    text-align-last: center;
+}
+
+#filtros select,
+#filtros input {
+    background: var(--fondo_principal);
+    border: 1px solid var(--fondo_secundario);
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    width: 120px;
+    margin: 5px;
+}
+
+#apply-filters {
+    background: var(--azul-medio);
+    color: var(--white);
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#apply-filters:hover {
+    background: var(--azul-medio-oscuro);
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.105);
+
+}
+
+@media (max-width: 768px) {
+    #filtros {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    #filtros select,
+    #filtros input {
+        width: 100%;
+    }
+}
+
+
+select[name="valor"] {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+select[name="valor"].show {
+    max-height: 100px;
+    opacity: 1;
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--resaltado);
+  }
